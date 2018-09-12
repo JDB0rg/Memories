@@ -12,6 +12,12 @@
 		118EA2A52149AA4A0077318B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118EA2A32149AA4A0077318B /* Main.storyboard */; };
 		118EA2A72149AA4C0077318B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 118EA2A62149AA4C0077318B /* Assets.xcassets */; };
 		118EA2AA2149AA4C0077318B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118EA2A82149AA4C0077318B /* LaunchScreen.storyboard */; };
+		118EA2B62149AB090077318B /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA2B52149AB090077318B /* Memory.swift */; };
+		118EA2B82149B0AA0077318B /* MemoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA2B72149B0AA0077318B /* MemoryController.swift */; };
+		118EA2BA2149BBCD0077318B /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA2B92149BBCD0077318B /* OnboardingViewController.swift */; };
+		118EA2BC2149BE5E0077318B /* MemoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA2BB2149BE5E0077318B /* MemoriesTableViewController.swift */; };
+		118EA2BE2149C3490077318B /* MemoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA2BD2149C3490077318B /* MemoryDetailViewController.swift */; };
+		118EA2C02149C41B0077318B /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA2BF2149C41B0077318B /* LocalNotificationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		118EA2A62149AA4C0077318B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		118EA2A92149AA4C0077318B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		118EA2AB2149AA4C0077318B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		118EA2B52149AB090077318B /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		118EA2B72149B0AA0077318B /* MemoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryController.swift; sourceTree = "<group>"; };
+		118EA2B92149BBCD0077318B /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		118EA2BB2149BE5E0077318B /* MemoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesTableViewController.swift; sourceTree = "<group>"; };
+		118EA2BD2149C3490077318B /* MemoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailViewController.swift; sourceTree = "<group>"; };
+		118EA2BF2149C41B0077318B /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +66,60 @@
 		118EA29E2149AA4A0077318B /* Memories */ = {
 			isa = PBXGroup;
 			children = (
+				118EA2B42149AAF80077318B /* Model */,
+				118EA2B32149AAEF0077318B /* View Controllers */,
+				118EA2C12149C4210077318B /* Local Notification */,
+				118EA2B22149AAE60077318B /* Storyboard */,
+				118EA2B12149AADF0077318B /* Resources */,
+			);
+			path = Memories;
+			sourceTree = "<group>";
+		};
+		118EA2B12149AADF0077318B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				118EA29F2149AA4A0077318B /* AppDelegate.swift */,
-				118EA2A12149AA4A0077318B /* ViewController.swift */,
-				118EA2A32149AA4A0077318B /* Main.storyboard */,
 				118EA2A62149AA4C0077318B /* Assets.xcassets */,
 				118EA2A82149AA4C0077318B /* LaunchScreen.storyboard */,
 				118EA2AB2149AA4C0077318B /* Info.plist */,
 			);
-			path = Memories;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		118EA2B22149AAE60077318B /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				118EA2A32149AA4A0077318B /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		118EA2B32149AAEF0077318B /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				118EA2A12149AA4A0077318B /* ViewController.swift */,
+				118EA2B92149BBCD0077318B /* OnboardingViewController.swift */,
+				118EA2BB2149BE5E0077318B /* MemoriesTableViewController.swift */,
+				118EA2BD2149C3490077318B /* MemoryDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		118EA2B42149AAF80077318B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				118EA2B52149AB090077318B /* Memory.swift */,
+				118EA2B72149B0AA0077318B /* MemoryController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		118EA2C12149C4210077318B /* Local Notification */ = {
+			isa = PBXGroup;
+			children = (
+				118EA2BF2149C41B0077318B /* LocalNotificationHelper.swift */,
+			);
+			path = "Local Notification";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +193,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118EA2BC2149BE5E0077318B /* MemoriesTableViewController.swift in Sources */,
+				118EA2B62149AB090077318B /* Memory.swift in Sources */,
+				118EA2C02149C41B0077318B /* LocalNotificationHelper.swift in Sources */,
+				118EA2BE2149C3490077318B /* MemoryDetailViewController.swift in Sources */,
 				118EA2A22149AA4A0077318B /* ViewController.swift in Sources */,
+				118EA2BA2149BBCD0077318B /* OnboardingViewController.swift in Sources */,
+				118EA2B82149B0AA0077318B /* MemoryController.swift in Sources */,
 				118EA2A02149AA4A0077318B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,7 +345,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Memories/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Memories/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,7 +362,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Memories/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Memories/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
