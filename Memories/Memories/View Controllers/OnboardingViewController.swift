@@ -16,6 +16,8 @@ class OnboardingViewController: UIViewController {
         localNotificationHelper.requestAuthorization() { (success) in
             if success == success {
                     self.localNotificationHelper.scheduleDailyReminderNotification()
+                    self.performSegue(withIdentifier: "onboardSegue", sender: nil)
+///////////////// Doesn't seem to hit this /////////////////
             }
         }
     }
@@ -23,14 +25,10 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        PHPhotoLibrary.authorizationStatus()
-//        let status = PHAuthorizationStatus(rawValue: 0)
-//        if status == .authorized {
-//            presentImagePickerController()
-//
         localNotificationHelper.getAuthorizationStatus() { (settings) in
-            if settings == settings {
+            if settings == .authorized {
                 self.performSegue(withIdentifier: "onboardSegue", sender: nil)
+///////////// Hits segue instantly /////////////////
             }
         }
     }

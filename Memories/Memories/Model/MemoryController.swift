@@ -10,7 +10,7 @@ import Foundation
 
 class MemoryController {
     
-    var memories: [Memory] = []
+    private (set) var memories: [Memory] = []
     
     //// Crud Functions ////
     

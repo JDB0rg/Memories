@@ -75,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="-393" y="134"/>
         </scene>
-        <!--Memories Table View Controller-->
+        <!--Memories-->
         <scene sceneID="5bB-RD-HUv">
             <objects>
                 <tableViewController id="VJU-MR-Dm4" customClass="MemoriesTableViewController" customModule="Memories" customModuleProvider="target" sceneMemberID="viewController">
@@ -110,7 +110,7 @@
                             <outlet property="delegate" destination="VJU-MR-Dm4" id="1fq-j2-m27"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="FqU-S2-X8D">
+                    <navigationItem key="navigationItem" title="Memories" id="FqU-S2-X8D">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="jPx-IA-gTM">
                             <connections>
                                 <segue destination="mng-CK-K6Z" kind="show" identifier="addMemorySegue" id="3Eo-jp-hxS"/>

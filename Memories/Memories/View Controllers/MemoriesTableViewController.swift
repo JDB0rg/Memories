@@ -37,6 +37,7 @@ class MemoriesTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         print ("Count \(memoryController?.memories.count ?? 0)")
         return memoryController?.memories.count ?? 0
+///////////////// After Save Count is still 0 /////////////////
     }
 
     

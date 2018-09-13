@@ -19,12 +19,14 @@ class MemoryDetailViewController: UIViewController, UIImagePickerControllerDeleg
         
         guard let title = detailTextField.text,
             let bodyText = detailTextView.text,
-            let imageData = detailImageView.image else { return }
+            let image = detailImageView.image,
+            let imageData = UIImagePNGRepresentation(image) else { return }
+///////////////// Need to fix this /////////////////
         
         if let memory = memory {
-            memoryController?.update(memory: memory, title: title, bodyText: title, imageData: memory.imageData)
+            memoryController?.update(memory: memory, title: title, bodyText: title, imageData: imageData)
         } else if memory == nil {
-            memoryController?.create(title: title, bodyText: bodyText, imageData: (memory?.imageData)!)
+            memoryController?.create(title: title, bodyText: bodyText, imageData: imageData)
         }
         navigationController?.popViewController(animated: true)
     }
@@ -75,17 +77,15 @@ class MemoryDetailViewController: UIViewController, UIImagePickerControllerDeleg
     
     private func updateViews() {
         
-        guard let unwrapMemory = memory else {
-            if memory == nil {
-                title = "Add Memory"
-            } else {
-                title = "Edit Memory"
-            }
+        guard let memory = memory else {
+            title = "Add Memory"
             return
         }
-            
-        title = unwrapMemory.title
-        guard isViewLoaded else { return }
+            let photoImage = UIImage(data: memory.imageData)
+        
+            detailImageView.image = photoImage
+            detailTextField.text = memory.title
+            detailTextView.text = memory.bodyText
         
     }
     
@@ -95,6 +95,7 @@ class MemoryDetailViewController: UIViewController, UIImagePickerControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updateViews()
         // Do any additional setup after loading the view.
     }
 
