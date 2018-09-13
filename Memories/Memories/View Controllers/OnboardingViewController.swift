@@ -23,19 +23,17 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        PHPhotoLibrary.authorizationStatus()
+//        let status = PHAuthorizationStatus(rawValue: 0)
+//        if status == .authorized {
+//            presentImagePickerController()
+//
         localNotificationHelper.getAuthorizationStatus() { (settings) in
-            if settings = settings.authorizationStatus {
-                performSegue(withIdentifier: "onboardSegue", sender: nil?)
+            if settings == settings {
+                self.performSegue(withIdentifier: "onboardSegue", sender: nil)
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation

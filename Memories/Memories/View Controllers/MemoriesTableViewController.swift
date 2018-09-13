@@ -12,12 +12,18 @@ class MemoriesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +35,8 @@ class MemoriesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return memoryController.memories.count
+        print ("Count \(memoryController?.memories.count ?? 0)")
+        return memoryController?.memories.count ?? 0
     }
 
     
@@ -37,56 +44,46 @@ class MemoriesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memoryCell", for: indexPath)
 
         // Configure the cell...
-        let memory = memoryController.memories[indexPath.row]
+        guard let memory = memoryController?.memories[indexPath.row] else { return cell }
         cell.textLabel?.text = memory.title
         cell.imageView?.image = UIImage(data: memory.imageData)
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            
+            guard let memory = memoryController?.memories[indexPath.row] else { return }
+            memoryController?.delete(memory: memory)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
-
+    // addMemorySegue // detailViewSegue
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "addMemorySegue" {
+            guard let addMemoryVC = segue.destination as?
+                MemoryDetailViewController else { return }
+            
+            addMemoryVC.memoryController = memoryController
+            
+        } else if segue.identifier == "detailViewSegue" {
+            guard let detailViewVC = segue.destination as?
+                MemoryDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let memory = memoryController?.memories[indexPath.row]
+            detailViewVC.memoryController = memoryController
+            detailViewVC.memory = memory
+        }
     }
-    */
-    var memoryController: MemoryController
+
+    var memoryController: MemoryController?
 }
